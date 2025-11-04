@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Big 5 Archetype Test</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <h1>Big 5 Personality Archetype Test</h1>
+    <p>Rate each statement 1–5. 1 being low and 5 being high.</p>
+    <div id="quiz"></div>
+    <div class="actions"><button id="submitBtn">See My Result</button></div>
+    <p><a href="/subtype" class="button">Refine Your Archetype (Subtype Quiz)</a></p>
+    <div id="result" class="result hidden"></div>
+    <div id="payBlock" class="hidden">
+      <button id="buyReportBtn">$0.00 – Get Detailed Report</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='quiz.js') }}"></script>
+</body>
+</html>

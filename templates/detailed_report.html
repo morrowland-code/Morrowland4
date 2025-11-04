@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ archetype }} – Detailed Big 5 Report</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background:#0f172a; color:#e5e7eb; margin:0; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 24px; }
+    .card { background:#111827; border-radius:16px; padding:24px 28px; box-shadow:0 6px 24px rgba(0,0,0,.35); }
+    h1 { color:#93c5fd; margin-bottom:6px; }
+    h2 { color:#a5b4fc; margin-top:28px; }
+    .meta { color:#cbd5e1; margin:4px 0 16px; }
+    .divider { border:0; border-top:1px solid #1f2937; margin:18px 0; }
+    button { background:#2563eb; color:white; border:none; padding:10px 16px; border-radius:10px; cursor:pointer; }
+    button:hover{ background:#1d4ed8; }
+    pre { white-space:pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>{{ archetype }}</h1>
+      <div class="meta"><strong>Traits:</strong> {{ traits }}</div>
+      <div class="meta"><strong>Subtype:</strong> {{ subtype }}</div>
+
+      <hr class="divider"/>
+
+      {% for title, text in sections.items() %}
+        <h2>{{ title }}</h2>
+        <p style="white-space:pre-line">{{ text }}</p>
+      {% endfor %}
+
+      <hr class="divider"/>
+      <p><em>{{ quote }}</em></p>
+
+      <form action="/api/download-report" method="get" style="margin-top:16px;">
+        <input type="hidden" name="code" value="{{ traits|replace(' | ', '-') }}"/>
+        <input type="hidden" name="sub" value="{{ subtype if subtype != 'N/A' else '' }}"/>
+        <button type="submit">Download .docx Report</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

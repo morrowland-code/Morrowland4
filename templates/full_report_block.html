@@ -1,0 +1,94 @@
+<h1>{{ name }}</h1>
+<p class="subtitle">{{ code.replace("-", " | ") }}{% if subtype5 %} — Subtype {{ subtype5 }}{% if subtype_label %} ({{ subtype_label }}){% endif %}{% endif %}</p>
+
+<section>
+  <h2>Personality Summary</h2>
+  <ul>
+    {% for label, text, lvl in traits %}
+      <li><strong>{{ label }} ({{ lvl }})</strong> — {{ text }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section>
+  <h2>Decision-Making Style</h2>
+  <ul>
+    {% for line in decision %}<li>{{ line }}</li>{% endfor %}
+  </ul>
+</section>
+
+<section>
+  <h2>Aesthetic & Style</h2>
+  <p>Common themes: {{ ", ".join(aesthetic) }}.</p>
+</section>
+
+<section>
+  <h2>Tattoo / Symbolic Expression</h2>
+  <p>Motifs they might resonate with for life symbolism: {{ ", ".join(tattoos) }}.</p>
+</section>
+
+<section>
+  <h2>Hobbies & Activities</h2>
+  <ul>{% for h in hobbies %}<li>{{ h }}</li>{% endfor %}</ul>
+</section>
+
+<section>
+  <h2>Art & Entertainment</h2>
+  <p><strong>Film:</strong> {{ film }}.</p>
+  <p><strong>Music:</strong> {{ music }}.</p>
+  <p><strong>Visual art:</strong> {{ visual }}.</p>
+</section>
+
+<section>
+  <h2>Intelligence & Cognitive Style</h2>
+  <ul>{% for line in intel %}<li>{{ line }}</li>{% endfor %}</ul>
+</section>
+
+<section>
+  <h2>Trauma Interpretation (General)</h2>
+  <ul>{% for line in trauma %}<li>{{ line }}</li>{% endfor %}</ul>
+  <p><em>This is general information, not medical advice. For diagnosis or treatment, consult a licensed professional. If you or someone you know is in crisis, contact local emergency services or a crisis hotline.</em></p>
+</section>
+
+<section>
+  <h2>Ethical Attraction & Relationship Fit</h2>
+  <ul>{% for line in attract %}<li>{{ line }}</li>{% endfor %}</ul>
+</section>
+
+<section>
+  <h2>Anti-Manipulation (Defense Skills)</h2>
+  <ul>{% for line in defense %}<li>{{ line }}</li>{% endfor %}</ul>
+</section>
+
+<section>
+  <h2>How to Market/Sell Ethically</h2>
+  <ul>{% for line in ads %}<li>{{ line }}</li>{% endfor %}</ul>
+  <p><em>Use transparent guarantees and consent-based messaging. No pressure tactics.</em></p>
+</section>
+
+<section>
+  <h2>Gift Ideas</h2>
+  <ul>{% for g in gifts %}<li>{{ g }}</li>{% endfor %}</ul>
+</section>
+
+<section>
+  <h2>30/90 Day Growth Plan</h2>
+  <ol>
+    <li>Choose one small weekly novelty matched to your energy.</li>
+    <li>Practice a boundary or communication script in low-stakes settings.</li>
+    <li>Document one measurable progress marker each week (journal or app).</li>
+  </ol>
+</section>
+<section>
+  <h2>Download Your Report</h2>
+  <p><a id="dlBtn" href="#">Download .docx Report</a></p>
+</section>
+
+<script>
+  document.getElementById("dlBtn").addEventListener("click", ()=>{
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    const sub = params.get("sub");
+    window.location = `/api/download-report?code=${encodeURIComponent(code)}${sub?`&sub=${sub}`:''}`;
+  });
+</script>

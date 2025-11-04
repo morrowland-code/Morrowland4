@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Subtype Refinement Quiz</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Refine Your Archetype</h1>
+    <p>Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
+
+    <form id="subForm">
+      <div class="q"><p>I enjoy exploring unfamiliar ideas and creative projects.</p>
+        <input type="range" name="O" min="1" max="5" step="1" value="3" oninput="this.nextElementSibling.textContent=this.value">
+        <span>3</span>
+      </div>
+
+      <div class="q"><p>I prefer to plan and organize my tasks carefully.</p>
+        <input type="range" name="C" min="1" max="5" step="1" value="3" oninput="this.nextElementSibling.textContent=this.value">
+        <span>3</span>
+      </div>
+
+      <div class="q"><p>I feel energized by social events and interaction.</p>
+        <input type="range" name="E" min="1" max="5" step="1" value="3" oninput="this.nextElementSibling.textContent=this.value">
+        <span>3</span>
+      </div>
+
+      <div class="q"><p>I naturally empathize with others’ feelings and needs.</p>
+        <input type="range" name="A" min="1" max="5" step="1" value="3" oninput="this.nextElementSibling.textContent=this.value">
+        <span>3</span>
+      </div>
+
+      <div class="q"><p>I experience emotional highs and lows intensely.</p>
+        <input type="range" name="N" min="1" max="5" step="1" value="3" oninput="this.nextElementSibling.textContent=this.value">
+        <span>3</span>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="submitSub">Show My Variant</button>
+      </div>
+    </form>
+
+    <p id="subResult"></p>
+  </div>
+
+  <script src="{{ url_for('static', filename='subtype_quiz.js') }}"></script>
+</body>
+</html>

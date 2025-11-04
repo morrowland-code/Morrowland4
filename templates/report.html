@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Your Detailed Archetype Report</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <div id="gate"><p>Verifying payment...</p></div>
+    <div id="report" class="hidden"></div>
+  </div>
+  <script src="{{ url_for('static', filename='report.js') }}"></script>
+</body>
+</html>
